@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <style>
+        body {
+            padding: 0.8em;
+            box-sizing: border-box;
+            padding-top: 0;
+            padding-bottom: 2em;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #999;
+        }
+
+        .outlineRow {
+            padding: 0.1em;
+        }
+
+        .outlineRow.level1 {
+            font-weight: bold;
+            color: #fff;
+            margin-top: 0.75em;
+            margin-bottom: 0.25em;
+
+        }
+
+        .outlineRow:hover {
+            background-color: #ffffff22;
+        }
+
+        .outlineRow {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            line-height: 1.0em;
+            margin-bottom: 0.05em;
+        }
+
+        .outlineText {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .outlineMeta {
+            flex-shrink: 0;
+        }
+
+
+        span.chip {
+            box-sizing: border-box;
+            margin-left: 4px;
+            min-width: 16px;
+            width: 16px;
+            border-radius: 2px;
+            display: inline-block;
+            cursor: pointer;
+            opacity: 0.6;
+        }
+        span.action {
+            border-radius: 50%;
+        }
+
+        span.chip:hover,
+        span.chip.inherited:hover {
+            opacity: 1;
+        }
+
+        span.chip.inherited{
+            background-color: transparent !important;
+            opacity: 0.42;
+        }
+
+        select {
+            background-color: #333;
+            color: #fff;
+            padding: 3px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            height: 3em;
+        }
+
+        option {
+            background-color: #222;
+            color: #ccc;
+            font-size: 0.90em;
+        }
+
+        #topicsList {
+            box-sizing: border-box;
+            width: 49%;   
+        }
+
+        #peopleList {
+            margin-left: 0;
+            box-sizing: border-box;
+            width: 49%;
+        }
+
+         /* #clock {
+            margin:0;
+            border: 0;
+            text-align: center;
+            font-weight: bold;
+            color: rgb(140, 0, 0);
+            font-size: 2.5em;
+        } */
+    </style>
+</head>
+
+<body>
+     <!-- <div id="clock"></div> -->
+    <select id="peopleList" onchange="select(this)"></select>
+    <select id="topicsList" onchange="select(this)"></select>
+    <div id="outline"></div>
+   
+
+    <script src="panelOutline.js"></script>
+    <script src="utils.js"></script>
+
+
+</body>
+
+</html>

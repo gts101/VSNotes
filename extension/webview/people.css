@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #000;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+    background-position: left top;
+    background-attachment: fixed;
+    transition: background-image 1s ease;
+}
+
+body.bg1 {
+    background-image:
+        linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)),
+        url('backgrounds/colours.png');
+}
+
+
+
+body.bg2 {
+    background-image: url('backgrounds/dark_red.jpg');
+}
+
+body.bg3 {
+    background-image: url('backgrounds/wall.jpg');
+}
+
+body.bg4 {
+    background-image: url('backgrounds/sand.jpg');
+}
+
+
+.note {
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    font-size: 0.95em;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    /* #7E297E; */
+    color: white;
+    user-select: none;
+    opacity: 0.75;
+    /* Animate background changes */
+    background: #00000066;
+    transition: background 0.1s ease;
+    text-align: center;
+}
+
+.note:hover {
+    background-color: #ffffff66;
+}
+
+.note.ACCA {
+    background-color: #11b124AA;
+}
+
+.note.ACME {
+    background-color: #ffd000AA;
+}
+
+.note.EMCA {
+    background-color: #2d54ffAA;
+}
+
+.note.ACCA:hover {
+    background-color: #11b124FF;
+    opacity: 1;
+}
+
+.note.ACME:hover {
+    background-color: #ffd000CC;
+    opacity: 1;
+}
+
+.note.EMCA:hover {
+    background-color: #2d54ffFF;
+    opacity: 1;
+}
+
+ol.swList {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 0.7em;
+}
+
+ol.swList li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.note.hasAction {
+    border: 3px solid red;
+}
+
+.note.hasExternalAction {
+    outline: 2px dashed red;
+}
+
+.note:active {
+    background: #FF0000AA;
+}
+
+textarea {
+    background: none;
+    color: #ccc;
+}

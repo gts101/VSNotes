@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--no-deprecation" 
+            ],  
+            "env": {
+                "NODE_OPTIONS": "--disable-warning=DEP0040",
+                "NODE_NO_WARNINGS": "1"
+            }
+        }
+    ]
+}

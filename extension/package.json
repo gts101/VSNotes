@@ -1,0 +1,95 @@
+{
+    "name": "md-action-parser",
+    "displayName": "Markdown Action Parser",
+    "description": "Minimal parser for actions in Markdown files",
+    "version": "0.0.1",
+    "icon": "resources/extension_icon.png",
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "main": "./extension.js",
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "myNotesContainer",
+                    "title": "Notes",
+                    "icon": "resources/checkbox.svg"
+                }
+            ]
+        },
+        "views": {
+            "myNotesContainer": [
+                {
+                    "id": "panelOutlineView",
+                    "name": "Outline",
+                    "type": "webview"
+                },
+                {
+                    "id": "panelActionsSorterView",
+                    "name": "Actions",
+                    "type": "webview"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "extension.jumpToLine",
+                "title": "Jump to line"
+            },
+            {
+                "command": "notesExtension.openAtLine",
+                "title": "Open Note At Line"
+            },
+            {
+                "command": "extension.refreshActions",
+                "title": "Refresh Actions"
+            },
+            {
+                "command": "extension.openAction",
+                "title": "Open Action"
+            },
+            {
+                "command": "extension.openTimestamp",
+                "title": "Open Timestamp"
+            },
+            {
+                "command": "extension.toggleShowAllActions",
+                "title": "Filter",
+                "icon": "resources/filter-on.svg"
+            },
+            {
+                "command": "notesCanvas.open",
+                "title": "Open Notes Canvas",
+                "icon": "resources/person.svg"
+            },
+            {
+                "command": "extension.applySorting",
+                "title": "Apply Sorting",
+                "icon": "resources/sort.svg"
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "extension.toggleShowAllActions",
+                    "when": "view == actionView || view == panelActionsSorterView",
+                    "group": "navigation"
+                },
+                {
+                    "command": "notesCanvas.open",
+                    "when": "view == panelOutlineView",
+                    "group": "navigation"
+                },
+                {
+                    "command": "extension.applySorting",
+                    "when": "view == panelActionsSorterView",
+                    "group": "navigation"
+                }
+            ]
+        }
+    }
+}
