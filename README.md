@@ -6,6 +6,9 @@ VSNotes is a VSCode extension that:
     - ouline view with datestamps
     - actions view with sortable priority list
 
+![screenshot](screenshot.png)
+
+
 ## Why?
 - A need to be organised.
 - A love of structured data, simplicity and connecting data.
