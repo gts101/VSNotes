@@ -58,6 +58,16 @@ An `action` looks like:
 }
 ```
 
+### Building `.vsix` file
+Run from code (using `<F5>` to launch in debug mode), or:
+
+1. 'Compress' the `extension` folder into a zip
+2. Change the zip file extension to `.vsix`, e.g. `extension.vsix`.
+3. In VSCode use `<CTRL>+<SHIFT>+<P>` to open the command pallette
+4. Choose 'Extensions: Install from VSIX'
+5. Select the `.vsix` file
+6. Reload VSCode
+
 ## Who?
 This is just a useful personal tool. If you share my requirements, you're welcome to use this (at your peril).
 
