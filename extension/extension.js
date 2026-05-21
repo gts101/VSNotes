@@ -393,6 +393,19 @@ function activate(context) {
         }
     }
 
+    function normaliseActionPriorities() {
+        if (canSortActions) {
+            if (panelActionsSorterViewProviderInstance) {
+                //add actions counter to panel title...
+                panelActionsSorterViewProviderInstance.normaliseActionPriorities();
+            }
+        } else {
+            vscode.window.showInformationMessage('cannot normalise when list is filtered');
+        }
+    }
+
+    
+
     function setActionsTitle(count) {
         //const now = new Date();
         const str = "ACTIONS (" + count + ")" //  "+now.toLocaleTimeString();
@@ -539,6 +552,7 @@ function activate(context) {
         vscode.commands.registerCommand('extension.openTimestamp', openTimestamp),
         vscode.commands.registerCommand('extension.jumpToLine', jumpToLine),
         vscode.commands.registerCommand('extension.applySorting', applyActionsSorting),
+        vscode.commands.registerCommand('extension.normaliseActionPriorities', normaliseActionPriorities),
     );
 }
 

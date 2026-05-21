@@ -66,36 +66,34 @@ class panelActionsSorterViewProvider {
 
                 const actions = changedActions;
 
-                 vscode.window.showInformationMessage('saving...');
-                       
-                for (let i = 0; i < actions.length; i++) {
-                    const action = actions[i];
-                    //console.log("ACTION>>> ", action)
-                    // Open the markdown document
-                    const uri = vscode.Uri.file(action.filePath);
-                    const document = await vscode.workspace.openTextDocument(uri);
-                    // Get the current line text
-                    const line = document.lineAt(action.line);
-                    const text = line.text;
-                    // Replace leading [number]
-                    const updatedText = text.replace(/^\[\d+\]/, `[${action.priority}]`);
-                    // Create edit
-                    const edit = new vscode.WorkspaceEdit();
-                    edit.replace(uri, line.range, updatedText);
-                    // Apply edit
-                    await vscode.workspace.applyEdit(edit);
-                    // Save file
-                    await document.save();
+                if (actions.length == 0) {
+                    vscode.window.showInformationMessage('no changes to save...');
+                } else {
+                    vscode.window.showInformationMessage('saving '+actions.length+" change(s)");
+                    for (let i = 0; i < actions.length; i++) {
+                        const action = actions[i];
+                        //console.log("ACTION>>> ", action)
+                        // Open the markdown document
+                        const uri = vscode.Uri.file(action.filePath);
+                        const document = await vscode.workspace.openTextDocument(uri);
+                        // Get the current line text
+                        const line = document.lineAt(action.line);
+                        const text = line.text;
+                        // Replace leading [number]
+                        const updatedText = text.replace(/^\[\d+\]/, `[${action.priority}]`);
+                        // Create edit
+                        const edit = new vscode.WorkspaceEdit();
+                        edit.replace(uri, line.range, updatedText);
+                        // Apply edit
+                        await vscode.workspace.applyEdit(edit);
+                        // Save file
+                        await document.save();
+                    }
+                    this.initialise();
+                    this.refreshActionsSorterPanel();
+                    vscode.window.showInformationMessage('done...');
                 }
-                //refresh the actions list somehow???
-
-                this.initialise();
-                this.refreshActionsSorterPanel();
-                vscode.window.showInformationMessage('done...');
-                
             }
-
-
         });
     }
 
@@ -129,8 +127,12 @@ class panelActionsSorterViewProvider {
         this.webview.postMessage({
             type: 'applyActionsSorting'
         });
+    }
 
-
+    normaliseActionPriorities() {
+        this.webview.postMessage({
+            type: 'normaliseActionPriorities'
+        });
     }
 
 

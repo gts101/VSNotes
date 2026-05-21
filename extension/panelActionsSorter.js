@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('message', event => {
     //console.log('>>>>>actionsSorter received:', event.data);
     const message = event.data;
-
     if (message.type === 'actionsList') {
         actions = message.actions;
         //actions.sort((a, b) => a.priority - b.priority);
@@ -76,53 +75,42 @@ window.addEventListener('message', event => {
         });
         renderActions();
     }
-
     if (message.type === 'applyActionsSorting') {
         saveChanges();
     }
 
-
-
-});
-
-
-
-function applyActionsSorting() {
-
-    const normaliseAll = false;
-
-    if (normaliseAll) {
-        const count = actions.length;
-        console.log("count", count);
-        if (count === 1) {
-            actions[0].priority = 0;
-        } else {
-            actions.forEach((action, index) => {
-                action.priority = Math.round((index / (count - 1)) * 99);
-                console.log(action);
-            });
-        }
-    } else {
-
-        const changedActions = actions.filter(a => a.moved);
-        changedActions.forEach(action => {
-
-            const index = actions.indexOf(action);
-
-            const prev = actions[index - 1] || null;
-            const next = actions[index + 1] || null;
-
-            action.priority = assignPriority(prev, next);
-
-            //action.moved = false;
-        });
-
-
+    if (message.type === 'normaliseActionPriorities') {
+        normaliseActionPriorities();
     }
 
-    //saveChanges();
-    renderActions();
+    
+});
 
+function normaliseActionPriorities() {
+    const count = actions.length;
+    console.log("count", count);
+    if (count === 1) {
+        actions[0].originalPriority=actions[0].priority;
+        actions[0].priority = 0;
+    } else {
+        actions.forEach((action, index) => {
+            action.originalPriority=action.priority;
+            action.priority = Math.round((index / (count - 1)) * 99);
+        });
+    }
+    renderActions();
+}
+
+function applyActionsSorting() {
+    const changedActions = actions.filter(a => a.moved);
+    changedActions.forEach(action => {
+        const index = actions.indexOf(action);
+        const prev = actions[index - 1] || null;
+        const next = actions[index + 1] || null;
+        action.priority = assignPriority(prev, next);
+        //action.moved = false;
+    });
+    renderActions();
 }
 
 
@@ -159,7 +147,7 @@ function assignPriority(prevItem, nextItem) {
 function saveChanges() {
     console.log("let's edit local files programmatically!"); //what could possibly go wrong?
     //pass a message back to VSCode to update files one by one
-   
+
     vscode.postMessage({
         type: 'updateActionPriorities',  //TODO change this to 'actionClicked'
         actions: actions

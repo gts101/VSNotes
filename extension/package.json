@@ -69,25 +69,35 @@
             {
                 "command": "extension.applySorting",
                 "title": "Apply Sorting",
+                "icon": "resources/tick.svg"
+            },
+            {
+                "command": "extension.normaliseActionPriorities",
+                "title": "normaliseActionPriorities",
                 "icon": "resources/sort.svg"
             }
         ],
         "menus": {
             "view/title": [
                 {
-                    "command": "extension.toggleShowAllActions",
-                    "when": "view == actionView || view == panelActionsSorterView",
-                    "group": "navigation"
-                },
-                {
                     "command": "notesCanvas.open",
                     "when": "view == panelOutlineView",
                     "group": "navigation"
                 },
+
                 {
                     "command": "extension.applySorting",
                     "when": "view == panelActionsSorterView",
-                    "group": "navigation"
+                    "group": "navigation@1"
+                }, {
+                    "command": "extension.normaliseActionPriorities",
+                    "when": "view == panelActionsSorterView",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "extension.toggleShowAllActions",
+                    "when": "view == panelActionsSorterView",
+                    "group": "navigation@3"
                 }
             ]
         }
