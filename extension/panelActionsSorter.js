@@ -193,6 +193,7 @@ function renderActions() {
         div.addEventListener('mousedown', (e) => {
             startDrag(e, div);
         });
+        div.title=actionPath + " > " + action.text;
         //add to the container div
         sorterDiv.appendChild(div);
         elements.push(div);
