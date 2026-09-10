@@ -12,9 +12,7 @@ body {
 }
 
 body.bg1 {
-    background-image:
-        linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)),
-        url('backgrounds/colours.png');
+    background-image: url('backgrounds/radar.jpg');
 }
 
 
