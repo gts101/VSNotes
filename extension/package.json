@@ -2,7 +2,7 @@
     "name": "md-action-parser",
     "displayName": "Markdown Action Parser",
     "description": "Minimal parser for actions in Markdown files",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "icon": "resources/extension_icon.png",
     "engines": {
         "vscode": "^1.80.0"
